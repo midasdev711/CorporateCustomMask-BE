@@ -63,13 +63,18 @@ exports.upload = async (req, res) => {
       Province: userInfo.province,
       Country: userInfo.country,
       Filename: userInfo.filename,
-      Maskcolor: userInfo.color.hex,
+      "Mask color1": userInfo.color1.hex,
+      "Mask color2": userInfo.color2.hex,
+      "Mask color3": userInfo.color3.hex,
+      "Number of masks needed": userInfo.maskCountNeeded,
+      "Required delivery date": userInfo.deliveryDate,
       Firstname: userInfo.firstName,
       Lastname: userInfo.lastName,
       Email: userInfo.email,
       Phone: userInfo.phone,
       'Uploaded Time': moment().format("YYYY-MM-DD h:mm:ss a"),
-      Comment: userInfo.comment
+      Comment: userInfo.comment,
+      "Input Language": userInfo.inputLanguage
     });
 
     let from     = 'thierry@legaleriste.com',
