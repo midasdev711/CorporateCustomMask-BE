@@ -49,7 +49,7 @@ async function addInfoToGoogleSheet(userInfo) {
     private_key: config.GOOGLE_PRIVATE_KEY.replace(/\\n/gm, '\n'),
   });
   await doc.loadInfo();
-  const sheet = doc.sheetsByIndex[0];
+  const sheet = doc.sheetsByIndex[1];
   
   
   const newRow = await sheet.addRow({
@@ -86,7 +86,7 @@ exports.upload = async (req, res) => {
       private_key: config.GOOGLE_PRIVATE_KEY.replace(/\\n/gm, '\n'),
     });
     await doc.loadInfo();
-    const sheet = doc.sheetsByIndex[0];
+    const sheet = doc.sheetsByIndex[1];
 
     const rows = await sheet.getRows();
     let uploadCount = 0;
@@ -111,13 +111,13 @@ exports.upload = async (req, res) => {
     addInfoToGoogleSheet(userInfo);
 
     // send email
-    let from     = 'thierry@legaleriste.com',
-        to       = userInfo.email,
-        subject  = 'Image uploaded',
-        text     = `New image '${newFilename}' uploaded`,
-        html     = `<h1>HTML test</h1>`;
+    // let from     = 'thierry@legaleriste.com',
+    //     to       = userInfo.email,
+    //     subject  = 'Image uploaded',
+    //     text     = `New image '${newFilename}' uploaded`,
+    //     html     = `<h1>HTML test</h1>`;
 
-    emailSender.sendEmail(from, to, subject, text, html);
+    // emailSender.sendEmail(from, to, subject, text, html);
     res.status(200).send('');
   });
 
